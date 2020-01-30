@@ -1,1 +1,1 @@
-# Game Jamp!
+# Game Jam!
