@@ -7,7 +7,7 @@ public class MapGenerator : MonoBehaviour
     public GameObject prefab;
     public Vector3 PositionOffset = new Vector3(0, 0, 100);
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         Vector3 position = this.transform.parent.position;
         Vector3 newPosition = position + PositionOffset;
