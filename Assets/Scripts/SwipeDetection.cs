@@ -7,6 +7,8 @@ public class SwipeDetection : MonoBehaviour
     private bool tap, swipeLeft, swipeRight, swipeUp;
     private Vector2 startTouch, swipeDelta;
 
+    private const int DEAD_ZONE = 125;
+
     private bool isDragin = false;
 
     public Vector2 SwipeDelta { get { return swipeDelta; }}
@@ -74,7 +76,7 @@ public class SwipeDetection : MonoBehaviour
 
         // Did we cross the deadZone?
 
-        if (swipeDelta.magnitude > 125)
+        if (swipeDelta.magnitude > DEAD_ZONE)
         {
             // which direction?
             float x = swipeDelta.x;
