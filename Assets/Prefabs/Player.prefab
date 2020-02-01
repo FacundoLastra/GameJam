@@ -382,9 +382,8 @@ GameObject:
   - component: {fileID: 2573170454040717825}
   - component: {fileID: 2573170454781005987}
   - component: {fileID: 2573170454781005986}
-  - component: {fileID: 2573170454781005985}
   m_Layer: 0
-  m_Name: Basic Motions Dummy
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,20 +454,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2573170454781005985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2573170454033455225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd4d12f466e0d4562bc42159d6856b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  position: 0
-  speed: 0.1
 --- !u!1 &2573170454033455227
 GameObject:
   m_ObjectHideFlags: 0

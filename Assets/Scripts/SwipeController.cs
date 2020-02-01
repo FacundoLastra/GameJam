@@ -30,13 +30,13 @@ public class SwipeController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         if (swipeControls.SwipeLeft)
         {
 
@@ -46,9 +46,9 @@ public class SwipeController : MonoBehaviour
         else if (swipeControls.SwipeRight)
         {
             MoveLane(true);
-            
+
         }
-    
+
         // calculate where we should be in the future
 
         Vector3 targetPosition = transform.position.z * Vector3.forward;
@@ -96,9 +96,9 @@ public class SwipeController : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward, dir, TURN_SPEED);
         }
 
-       
-        
-         
+
+
+
     }
 
     private void MoveLane(bool goingRight)
@@ -117,7 +117,7 @@ public class SwipeController : MonoBehaviour
             Vector3.down);
 
         return Physics.Raycast(groundRay, 0.2f + 0.1f);
-            
+
 
     }
 }
