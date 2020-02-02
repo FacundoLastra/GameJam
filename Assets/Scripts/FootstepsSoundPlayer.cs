@@ -12,7 +12,7 @@ public class FootstepsSoundPlayer : MonoBehaviour
         GetComponent<AudioSource>().clip = saw;
     }
 
-    void OnCollisionEnter(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.CompareTag("Floor"))
         {

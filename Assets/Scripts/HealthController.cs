@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
 		public float currentHealth = 100f;
 		public float maxHealth = 200f;
 		public float staticDamage = 1f;
-		public GameObject HealthUI;
+		public Slider HealthUI;
 		private static HealthController _instance;
 
 		// Start is called before the first frame update
@@ -30,7 +31,7 @@ public class HealthController : MonoBehaviour
 		}
 
 		void UpdateUI() {
-			HealthUI.GetComponent<UnityEngine.UI.Text>().text = currentHealth.ToString();
+			HealthUI.GetComponent<UnityEngine.UI.Slider>().value = currentHealth;
 		}
 
 		public static HealthController getInstance() {

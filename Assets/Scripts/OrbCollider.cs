@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OrbCollider : MonoBehaviour
 {
-		public GameObject player;
+		private GameObject player;
 		// Start is called before the first frame update
 		void Start()
 		{
@@ -20,9 +20,8 @@ public class OrbCollider : MonoBehaviour
 		void OnTriggerEnter()
 		{
 			player = GameObject.Find("Game");
-			Debug.Log("TRIGGER");
 			HealthController.getInstance();
 			HealthController.getInstance().addHealth(20f);
-			//GetComponent("Health Controller").addHealth(20f);
+		    Destroy(gameObject);
 		}
 }
