@@ -1127,7 +1127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20d5d19050e740c3a7f980a567cc262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3173451143249990998}
+  prefab:
+  - {fileID: 3173451143249990998}
+  - {fileID: 4650734337481777035, guid: 1124ff5005514b244a726df2c0aee357, type: 3}
+  - {fileID: 7069441561533292562, guid: 108d4e16cd881234386b0666eead6ae4, type: 3}
   PositionOffset: {x: 0, y: 0, z: 100}
 --- !u!1 &3173451142682139081
 GameObject:
@@ -2485,7 +2488,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 065b052bb8a5b40c983e8cb70d542e43, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3270,7 +3273,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 065b052bb8a5b40c983e8cb70d542e43, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

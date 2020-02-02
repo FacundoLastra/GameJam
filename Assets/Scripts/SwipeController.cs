@@ -71,9 +71,9 @@ public class SwipeController : MonoBehaviour
 
         bool isGrounder = isGrounded();
 
-        anim.SetBool("Grounded", isGrounder);
+        //anim.SetBool("Grounded", isGrounder);
         // calculate Y
-        if (isGrounder)
+        if (false)
         {
             verticalVelocity = -0.1f;
             if (swipeControls.SwipeUp)

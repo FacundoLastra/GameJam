@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
-		public float currentHealth = 100f;
-		public float maxHealth = 200f;
-		public float staticDamage = 1f;
-		public Slider HealthUI;
-		public RawImage MaskImage;
-		private static HealthController _instance;
-	    public Animator deathMenuAnim;
-	    private bool isDead = false;
-	    public SwipeController playerController;
+	public float currentHealth = 100f;
+	public float maxHealth = 200f;
+	public float staticDamage = 1f;
+	public Slider HealthUI;
+	public RawImage MaskImage;
+	private static HealthController _instance;
+	public Animator deathMenuAnim;
+	private bool isDead = false;
+	public SwipeController playerController;
 
 	// Mask Textures
 	public Texture maskTexture0;
@@ -24,32 +24,35 @@ public class HealthController : MonoBehaviour
 
 	// Start is called before the first frame update
 	void Start()
+	{
+		if (_instance == null)
 		{
-			if (_instance == null) {
-				_instance = this;
-			} else {
-				Destroy(gameObject);
-			}
+			_instance = this;
 		}
-
-		// Update is called once per frames
-		void Update()
+		else
 		{
-			if (currentHealth < maxHealth) {
-				currentHealth -= staticDamage * Time.deltaTime;
-			};
-
-            if(currentHealth < 0 && !isDead)
-            {
-			    playerController.Crash();
-            }
-			UpdateUI();
+			Destroy(gameObject);
 		}
+	}
 
-		void UpdateUI() {
-			HealthUI.GetComponent<UnityEngine.UI.Slider>().value = currentHealth;		
+	// Update is called once per frames
+	void Update()
+	{
+		currentHealth -= staticDamage * Time.deltaTime;
+		
 
-		if( currentHealth < 20)
+		if (currentHealth < 0 && !isDead)
+		{
+			playerController.Crash();
+		}
+		UpdateUI();
+	}
+
+	void UpdateUI()
+	{
+		HealthUI.GetComponent<UnityEngine.UI.Slider>().value = currentHealth;
+
+		if (currentHealth < 20)
 			MaskImage.GetComponent<RawImage>().texture = maskTexture0;
 		else if (currentHealth < 40)
 			MaskImage.GetComponent<RawImage>().texture = maskTexture1;
@@ -62,26 +65,29 @@ public class HealthController : MonoBehaviour
 
 	}
 
-		public static HealthController getInstance() {
-			return _instance;
-		}
+	public static HealthController getInstance()
+	{
+		return _instance;
+	}
 
-		public void addHealth(float KeyValuePair) {
-			currentHealth += KeyValuePair;
-		}
+	public void addHealth(float KeyValuePair)
+	{
+		currentHealth += KeyValuePair;
+	}
 
-	    public void OnPlayButton()
-	    {
-            if(isDead)
-		        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
-	    }
+	public void OnPlayButton()
+	{
+		if (isDead)
+			UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+	}
 
-	    public void OnDeath()
-	    {
-		    deathMenuAnim.SetTrigger("Dead");
-		    isDead = true;
-		    HealthUI.gameObject.SetActive(false);
+	public void OnDeath()
+	{
+		deathMenuAnim.SetTrigger("Dead");
+		isDead = true;
+		HealthUI.gameObject.SetActive(false);
+		MaskImage.gameObject.SetActive(false);
 
-			Debug.Log("dead");
-	    }
+		Debug.Log("dead");
+	}
 }
