@@ -10,9 +10,12 @@ public class HealthController : MonoBehaviour
 		public float staticDamage = 1f;
 		public Slider HealthUI;
 		private static HealthController _instance;
+	    public Animator deathMenuAnim;
+	    private bool isDead = false;
+	    public SwipeController playerController;
 
-		// Start is called before the first frame update
-		void Start()
+	    // Start is called before the first frame update
+	    void Start()
 		{
 			if (_instance == null) {
 				_instance = this;
@@ -21,12 +24,17 @@ public class HealthController : MonoBehaviour
 			}
 		}
 
-		// Update is called once per frame
+		// Update is called once per frames
 		void Update()
 		{
 			if (currentHealth < maxHealth) {
 				currentHealth -= staticDamage * Time.deltaTime;
 			};
+
+            if(currentHealth < 0 && !isDead)
+            {
+			    playerController.Crash();
+            }
 			UpdateUI();
 		}
 
@@ -41,4 +49,19 @@ public class HealthController : MonoBehaviour
 		public void addHealth(float KeyValuePair) {
 			currentHealth += KeyValuePair;
 		}
+
+	    public void OnPlayButton()
+	    {
+            if(isDead)
+		        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+	    }
+
+	    public void OnDeath()
+	    {
+		    deathMenuAnim.SetTrigger("Dead");
+		    isDead = true;
+		    HealthUI.gameObject.SetActive(false);
+
+			Debug.Log("dead");
+	    }
 }

@@ -8,6 +8,7 @@ public class SwipeController : MonoBehaviour
     private CharacterController controller;
     public float LANE_DISTANCE = 3.0f;
     public float TURN_SPEED = 0.05f;
+    private bool isRunning = true;
 
     public float jumpForce = 1.0f;
 
@@ -18,6 +19,7 @@ public class SwipeController : MonoBehaviour
     public float speed = 7f;
     public float gravity = 12.0f;
     public float verticalVelocity;
+    public HealthController gamecontroller;
 
     private int desiredLane = 1; // 0 left , 1 center, 2 right
 
@@ -83,7 +85,10 @@ public class SwipeController : MonoBehaviour
 
         }
         moveVector.y = verticalVelocity;
-        moveVector.z = speed;
+        if (isRunning)
+        {
+            moveVector.z = speed;
+        }
 
         //move character
         controller.Move(moveVector * Time.deltaTime);
@@ -116,7 +121,24 @@ public class SwipeController : MonoBehaviour
             Vector3.down);
 
         return Physics.Raycast(groundRay, 0.2f + 0.1f);
+    }
 
+    public void Crash()
+    {
+        //dead
 
+        isRunning = false;
+        gamecontroller.OnDeath();
+
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        switch (hit.gameObject.tag)
+        {
+            case "Obstacle":
+                Crash();
+                break;
+        }
     }
 }
